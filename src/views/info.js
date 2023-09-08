@@ -10,7 +10,7 @@ module.exports = function mainView(state, emit) {
   const langArray = Object.entries(languages)
   return html`
 <div id="info-container" class="${state.showInfo ? "" : "hidden"}" style="direction:${textDirection}">
-  <div id="modal">
+  <div id="modal" class="hidden">
     <div id="modal-header" style="opacity:${state.showUI === true? 1: 0}">
       ${state.showInfo && langArray.length > 1 ? html`<div style="display:flex;flex-wrap:wrap">${langArray.map(([key, val]) => html`
         <div class="language-select" onclick=${() => emit('set language', key)}>${val}</div>
@@ -36,7 +36,7 @@ module.exports = function mainView(state, emit) {
         <p>${t('info.uses')}<ul>
         ${t('info.uses-list', { returnObjects: true }).map((text) => html`<li>${text}</li>`)}
         </ul></p>
-       
+
            <p class="align-right">${raw(t('info.author', { author: `href=https://ojack.xyz class=olivia target=_blank`}))}</p>
            <p>${raw(t('info.more-info', {
              docs: link("https://hydra.ojack.xyz/docs"),
@@ -87,7 +87,7 @@ module.exports = function mainView(state, emit) {
 //                 <li>Type Ctrl + Shift + Enter </li>
 //               </ol>
 //           </h4>
-  
+
 //           <p> ///////////////////////////////////////////////////////////<br><br><br>Built using WebRTC (peer-to-peer web streaming) and WebGL, hydra allows each connected browser/device/person to output a video signal or stream, and receive and modify streams from other browsers/devices/people. The API is inspired by analog modular synthesis, in which multiple visual sources (oscillators, cameras, application windows, other connected windows) can be transformed, modulated, and composited via combining sequences of functions. </p>
 //           <p>Features: <ul>
 //           <li>Written in javascript and compatible with other javascript libraries</li>
@@ -105,7 +105,7 @@ module.exports = function mainView(state, emit) {
 //             <a href="http://pixeljam.glitch.me/" target="_blank">PIXELJAM collaborative editor</a>,
 //             <a href="https://hydra-book.naotohieda.com/#/" target="_blank">Hydra Book</a>, and more <a href="https://github.com/ojack/hydra/blob/master/examples/README.md">tutorials and examples.</a></p>
 //             <p>There is also an active <a href="https://discord.gg/ZQjfHkNHXC" target="_blank">Discord server</a> and <a href="https://www.facebook.com/groups/1084288351771117/" target="_blank">facebook group</a> for hydra users+contributors.</p>
-  
+
 //           <p> If you enjoy using Hydra, please consider  <a href="https://opencollective.com/hydra-synth" target="_blank">supporting continued development ${'<3 <3'} </a></p>
 //         </div>
 //       </div>
