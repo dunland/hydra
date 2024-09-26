@@ -2,13 +2,20 @@ const Gallery = require('./gallery.js')
 const repl = require('../views/editor/repl.js')
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
 
+// WebSocket connection to the server
+const ws = new WebSocket('ws://localhost:3000');
+
+ws.onopen = () => {
+  console.log('Connected to WebSocket server');
+};
+
 module.exports = function store(state, emitter) {
   state.showInfo = false
   state.showUI = false
 
   const SERVER_URL = process.env['SERVER_URL']
   state.serverURL = SERVER_URL !== undefined ? SERVER_URL : null
- let sketches
+  let sketches // gallery
 
   emitter.on('DOMContentLoaded', function () {
     const editor = state.editor.editor
@@ -22,7 +29,7 @@ module.exports = function store(state, emitter) {
       // }
       emitter.emit('render')
       // @todo create gallery store
-    //  console.warn('gallery callback not let implemented')
+      //  console.warn('gallery callback not let implemented')
     }, state, emitter)
   })
 
@@ -30,7 +37,7 @@ module.exports = function store(state, emitter) {
     screencap()
     const editor = state.editor.editor
     const text = editor.getValue()
-    const data = new Blob([text], {type: 'text/plain'});
+    const data = new Blob([text], { type: 'text/plain' });
     const a = document.createElement('a')
     a.style.display = 'none'
     let d = new Date()
@@ -130,12 +137,18 @@ module.exports = function store(state, emitter) {
     emitter.emit('render')
   })
 
-  emitter.on('hude info', function (count) {
+  emitter.on('hide info', function (count) {
     state.showInfo = false
     emitter.emit('render')
   })
 
-
+  ws.onmessage = (event) => {
+    const data = event.data;
+    console.log('Received data:', data);
+    sketches.setSketch(sketches.getExampleById(data));
+    state.editor.editor.setValue(sketches.code)
+    repl.eval(state.editor.editor.getValue())
+  };
 
   emitter.on('mutate sketch', function () {
 

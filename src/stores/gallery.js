@@ -122,6 +122,7 @@ class Gallery {
   }
 
   setSketchFromCode(base64Code, callback) {
+    console.log('sketch from code');
     if (base64Code) {
       this.code = this.decodeBase64(base64Code)
       this.foundSketch = true
@@ -165,6 +166,7 @@ class Gallery {
   }
 
   setSketch(sketch) {
+    console.log(`set sketch to ${sketch.sketch_id}`);
     let code = this.decodeBase64(sketch.code)
     if (code.indexOf(license) < 0)
       code =
@@ -299,7 +301,9 @@ ${code}
   getExampleById(id) {
     //console.log('looking for', id, this.examples, this.sketches)
     var sketches = this.examples.filter((sketch) => sketch.sketch_id === id)
+    console.log(sketches);
     if (sketches.length <= 0) sketches = this.sketches.filter((sketch) => sketch.sketch_id === id)
+    console.log(sketches[0]);
     return sketches[0]
   }
 }
