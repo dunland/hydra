@@ -3,7 +3,7 @@ const repl = require('../views/editor/repl.js')
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
 
 // WebSocket connection to the server
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket('ws://localhost:8081');
 
 ws.onopen = () => {
   console.log('Connected to WebSocket server');
