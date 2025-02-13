@@ -198,3 +198,10 @@ weitere Referenzen:
 - [Johnny-Five](https://johnny-five.io/)
 JavaScript Robotics & IoT Platform
 - [RawHID](https://forum.pjrc.com/index.php?threads/making-webusb-work-with-the-teensy-what-is-pluggableusb.60782/page-2#post-247184)
+
+---------------------------------------------------
+
+## Video Playback
+
+put a file into `./public/video` and ref to it via 
+`s0.initVideo("http://localhost:8080/video/Rhizophora_2024-10-03_19-29-06.mp4")` (the http is important!)

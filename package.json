@@ -10,7 +10,7 @@
     "build": "browserify ./index.js -t [ envify --SERVER_URL https://api.hydrasynth.xyz] --debug -o ./public/bundle.js && npm run uglify",
     "source-map": "source-map-explorer ./public/bundle.min.js ./public/bundle.min.js.map",
     "dev": "npm run serve & npm run watch",
-    "serve": "http-server ./public",
+    "serve": "http-server ./public --cors",
     "publish": "git subtree push --prefix=public origin gh-pages"
   },
   "author": "",
@@ -34,13 +34,15 @@
     "shortid": "^2.2.16",
     "simple-peer": "^9.11.0",
     "socket.io-client": "^2.3.0",
+    "superagent": "^7.0.1",
     "webmidi": "^3.1.9",
     "ws": "^8.18.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
     "envify": "^4.1.0",
-    "esmify": "^2.1.1",
+    "esmify": "^0.1.2",
     "http-server": "^14.1.1",
     "source-map-explorer": "^2.5.2",
     "terser": "^5.14.2",
