@@ -2,6 +2,9 @@
 
 ## Usage
 
+1. starte serial monitor z.B. via `pio device monitor` nach neustart von supermuscle
+2. `npm run live` startet serial server zum emfapngen dieser nachrichten und startet hydra auf localhost:8080
+
 **WebMidi muss in Google Chrome gestartet werden!**
 In Firefox und Chromium erhalte ich folgenden Fehler: `InvalidStateError: Platform dependent initialization failed.`
 
@@ -9,7 +12,7 @@ In Firefox und Chromium erhalte ich folgenden Fehler: `InvalidStateError: Platfo
     -> Änderungen werden automatisch via `browserify` zu `bundle.js` geschrieben. Seite am besten mit Ctrl+F5 neu laden.
     Entry point ist `./index.js`. `index.html` lädt dann `bundle.js` – `bundle.min.js` wird nur mit `npm run build` erstellt.
 2. starte SUPERMUSCLE
-3. `python3 serial_to_hydra_url.py`
+3. `python3 utils/serial_to_hydra_url.py` oder das shell script in utils benutzen - das braucht allerdings screen
 
 * `CTRL-Enter`: run a line of code
 * `CTRL-Shift-Enter`: run all code on screen
@@ -25,6 +28,10 @@ In Firefox und Chromium erhalte ich folgenden Fehler: `InvalidStateError: Platfo
 - `Shift-Ctrl-1`: 'gallery:showExample',
 - `Shift-Ctrl-2`: 'editor:randomize'
 
+## TO DO:
+
+- enter -> next sketch
+
 ## Code
 
 **store.js** 
@@ -34,7 +41,7 @@ In Firefox und Chromium erhalte ich folgenden Fehler: `InvalidStateError: Platfo
 
 **gallery.js**
 - `setSketchFromURL()`
-- `getExampleById(id)` lädt sketch aus [examples.json](src/stores/examples.json)
+- `getExampleById(id)` lädt sketch aus [songList.json](src/stores/songList.json)
 
 ## WebMidi
 31.05.2024

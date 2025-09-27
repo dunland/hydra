@@ -11,7 +11,8 @@
     "source-map": "source-map-explorer ./public/bundle.min.js ./public/bundle.min.js.map",
     "dev": "npm run serve & npm run watch",
     "serve": "http-server ./public --cors",
-    "publish": "git subtree push --prefix=public origin gh-pages"
+    "publish": "git subtree push --prefix=public origin gh-pages",
+    "live": "node utils/serial_server.js & npm run dev"
   },
   "author": "",
   "license": "AGPL",

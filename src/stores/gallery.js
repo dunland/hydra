@@ -1,5 +1,5 @@
 const request = require('superagent')
-const examples = require('./examples.json')
+const examples = require('./songList.json')
 const sketches = []
 
 const license = `// licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/`

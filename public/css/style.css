@@ -10,6 +10,7 @@ html, body {
   height: 100%;
   color: #fff;
   line-height: 1.4;
+  cursor: none !important;
 }
 
 .camera-inputs{
